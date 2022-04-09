@@ -1,0 +1,18 @@
+.search {
+  display: flex;
+  align-items: center;
+  background: white;
+  width: 23rem;
+  padding: 0.4rem 0.5rem;
+  margin-top: 5rem;
+  border-radius: 10px;
+  justify-content: space-around;
+
+  input {
+    width: 20rem;
+    padding: 0.3rem;
+    font-size: 1rem;
+    border: none;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+}
