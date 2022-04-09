@@ -1,0 +1,28 @@
+background-color: rgb(222, 222, 241); = {
+    background,
+    search bar,
+    in progress
+    list element highlight
+}
+
+font color = {
+    purplish gray = color: rgb(94, 94, 126);
+    purple (buttons, text) = color: rgb(110, 99, 211);
+}
+
+dark purple
+    rgb(10, 0, 102); = {
+        side bar,
+        highlighted sorted heading (All, good, archived, in progress)
+}
+
+fonts:
+    font-family: 'Merriweather Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;     
+
+    
+
+
+    
+
+

@@ -1,0 +1,28 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+  background-color: rgb(231, 230, 238);
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .title {
+      font-family: "Merriweather Sans", sans-serif;
+      padding-left: 10px;
+    }
+  }
+
+  .right-div {
+    display: flex;
+    color: rgb(94, 94, 126);
+
+    .material-icons {
+      margin-right: 10px;
+    }
+  }
+}
