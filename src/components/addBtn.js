@@ -1,12 +1,10 @@
 import styles from "./addBtn.module.scss";
-import AddForm from "./addForm";
-import { useState } from "react";
 
-function AddToList({ onClick }) {
+function AddToList({ onClick, text }) {
   return (
     <div className={styles.div}>
       <button className={styles.add} onClick={onClick}>
-        + New Item
+        {text}
       </button>
     </div>
   );

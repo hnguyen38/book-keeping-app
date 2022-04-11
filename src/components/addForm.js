@@ -1,5 +1,4 @@
 import styles from "./addForm.module.scss";
-import { useContext } from "react";
 
 function AddForm() {
   return (
@@ -42,7 +41,6 @@ function AddForm() {
         </div>
         <div className={styles.btn}>
           <button className={styles.button}>Add Item</button>
-          <button className={styles.cancel}>Cancel</button>
         </div>
       </form>
     </div>

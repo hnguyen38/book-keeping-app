@@ -4,7 +4,7 @@ import styles from "./header.module.scss";
 
 import AddForm from "../components/addForm";
 
-import { useState, createContext } from "react";
+import { useState } from "react";
 
 function Header() {
   const [popup, setPopup] = useState();
@@ -16,7 +16,7 @@ function Header() {
     <div>
       <div className={styles.header}>
         <SearchBar />
-        <AddToList onClick={modal} />
+        <AddToList onClick={modal} text={popup ? "Cancel" : "+ Add Item"} />
       </div>
       <div>{popup ? <AddForm /> : null}</div>
     </div>

@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  justify-content: center;
+
+  .table {
+    margin: 10px;
+    padding-left: 2px;
+    text-align: left;
+    border-collapse: collapse;
+    width: 80vw;
+    //add responsive design here idk what tho
+    min-width: 1050px;
+    border: 1px solid rgba(94, 94, 126, 0.349);
+
+    .headrow {
+      background-color: rgb(222, 222, 241);
+      border-top: 1px solid rgba(94, 94, 126, 0.349);
+      border-bottom: 1px solid rgba(94, 94, 126, 0.349);
+      height: 2.3rem;
+      color: rgba(94, 94, 126, 0.822);
+      font-family: "Source Sans Pro", sans-serif;
+      font-size: 13px;
+
+      th {
+        position: relative;
+        padding: 0.7rem 2rem;
+
+        .icon {
+          position: absolute;
+        }
+      }
+    }
+  }
+}
