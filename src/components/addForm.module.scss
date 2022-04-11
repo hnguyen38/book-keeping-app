@@ -1,0 +1,86 @@
+.container {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.219);
+  position: fixed;
+  width: 100vw;
+  height: 87vh;
+
+  .form {
+    background-color: white;
+    font-family: "Source Sans Pro", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+    padding: 0 5rem;
+    border-radius: 10px;
+    box-shadow: -0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.212);
+
+    div {
+      margin: 20px;
+    }
+
+    label {
+      font-size: 15px;
+      color: rgb(94, 94, 126);
+    }
+
+    input,
+    select,
+    textarea {
+      font-family: "Source Sans Pro", sans-serif;
+      border: none;
+      border-bottom: 1px solid rgb(94, 94, 126);
+      color: rgb(94, 94, 126);
+      font-size: 23px;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        color: rgb(222, 222, 241);
+      }
+    }
+
+    .btn {
+      display: flex;
+      justify-content: space-between;
+      .button {
+        color: white;
+        background-color: rgb(110, 99, 211);
+        padding: 0.4rem 0.5rem;
+        border: none;
+        border-radius: 5px;
+        font-family: "Source Sans Pro", sans-serif;
+        width: 100px;
+        font-size: 15px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: rgb(88, 79, 175);
+        }
+      }
+      .cancel {
+        color: white;
+        background-color: rgb(182, 178, 214);
+        padding: 0.4rem 0.5rem;
+        border: none;
+        border-radius: 5px;
+        font-family: "Source Sans Pro", sans-serif;
+        width: 100px;
+        font-size: 15px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: rgb(121, 115, 175);
+        }
+      }
+    }
+  }
+}
