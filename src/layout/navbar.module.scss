@@ -1,29 +1,27 @@
-.nav {
+.container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 25px;
-  background-color: rgb(231, 230, 238);
+  justify-content: center;
 
-  .header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: rgb(231, 230, 238);
+  .div {
+    display: block;
+    padding: 0.5rem 0;
+    width: 80vw;
+    min-width: 1050px;
+    background-color: white;
 
-    .title {
-      font-family: "Merriweather Sans", sans-serif;
-      padding-left: 10px;
-    }
-  }
+    .tab {
+      margin: 0 2rem;
+      color: rgb(94, 94, 126);
 
-  .rightdiv {
-    display: flex;
-    color: rgb(94, 94, 126);
+      &:focus,
+      &:active {
+        color: rgb(10, 0, 102);
+      }
 
-    .materialicons {
-      margin-right: 10px;
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
     }
   }
 }

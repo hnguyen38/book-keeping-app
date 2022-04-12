@@ -13,12 +13,14 @@ function Header() {
     return popup ? setPopup(false) : setPopup(true);
   }
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.header}>
         <SearchBar />
-        <AddToList onClick={modal} text={popup ? "Cancel" : "+ Add Item"} />
+        <AddToList onClick={modal} />
       </div>
-      <div>{popup ? <AddForm /> : null}</div>
+      <div className={styles.popup}>
+        {popup ? <AddForm onCancel={() => setPopup(false)} /> : null}
+      </div>
     </div>
   );
 }

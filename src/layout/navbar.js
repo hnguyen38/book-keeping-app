@@ -1,19 +1,15 @@
 import styles from "./navbar.module.scss";
-import "../icons/icons.scss";
 
 function NavBar() {
   return (
-    <div className={styles.nav}>
-      <div className={styles.header}>
-        <span className="material-icons md-24 md-grey">&#xe431;</span>
-        <h2 className={styles.title}>Book</h2>
-      </div>
-
-      <div className={styles.rightdiv}>
-        <span className={`${styles.materialicons} material-icons md-grey`}>
-          &#xe8fd;
-        </span>
-        <span>Sign In</span>
+    <div className={styles.container}>
+      <div className={styles.div}>
+        <span className={styles.tab}>All</span>
+        <span className={styles.tab}>Favorites</span>
+        <span className={styles.tab}>In Contact</span>
+        <span className={styles.tab}>In Progress</span>
+        <span>|</span>
+        <span className={styles.tab}>Archived</span>
       </div>
     </div>
   );

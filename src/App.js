@@ -1,12 +1,14 @@
-import NavBar from "./layout/navbar";
+import TitleBar from "./layout/titlebar";
 import Header from "./layout/header";
 import Table from "./components/table/table";
+import NavBar from "./layout/navbar";
 
 function App() {
   return (
     <div>
-      <NavBar />
+      <TitleBar />
       <Header />
+      <NavBar />
       <Table />
     </div>
   );
