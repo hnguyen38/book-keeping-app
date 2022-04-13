@@ -32,10 +32,6 @@ function Table() {
         </thead>
         <tbody>
           <ListItem />
-          <ListItem />
-          <ListItem />
-          <ListItem />
-          <ListItem />
         </tbody>
       </table>
     </div>

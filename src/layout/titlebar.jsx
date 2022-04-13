@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 function TitleBar() {
-  const [signedOut, setSignOut] = useState();
+  const [signedIn, setSignIn] = useState(false);
 
   function signinOrup() {
-    if (signedOut) {
-    }
+    signedIn ? setSignIn(false) : setSignIn(true);
   }
 
   return (
@@ -25,7 +24,7 @@ function TitleBar() {
             &#xe8fd;
           </span>
           <span onClick={() => signinOrup()}>
-            <Link to="signin">{signedOut ? "Sign In" : "Sign Out"}</Link>
+            <Link to="signin">{signedIn ? "Sign Out" : "Sign In"}</Link>
           </span>
         </div>
       </div>

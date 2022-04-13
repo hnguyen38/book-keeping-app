@@ -10,13 +10,13 @@ function SignUp() {
       <label htmlFor="name">Display Name</label>
       <input id="name" type="text" />
 
-      <label htmlFor="email">Email</label>
-      <input id="email" type="email" />
+      <label htmlFor="upemail">Email</label>
+      <input id="upemail" type="email" />
 
-      <label htmlFor="password">Password</label>
-      <input id="password" type="password" />
-      <label htmlFor="password">Confirm Password</label>
-      <input id="password" type="password" />
+      <label htmlFor="uppassword">Password</label>
+      <input id="uppassword" type="password" />
+      <label htmlFor="confirmpassword">Confirm Password</label>
+      <input id="confirmpassword" type="password" />
 
       <div className={styles.buttons}>
         <button className={styles.signupBtn}>SIGN UP</button>
