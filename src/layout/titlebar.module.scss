@@ -20,12 +20,28 @@
       .title {
         font-family: "Merriweather Sans", sans-serif;
         padding-left: 10px;
+
+        a:link,
+        a:visited,
+        a:active,
+        a:focus {
+          text-decoration: none;
+          color: rgb(61, 61, 61);
+        }
       }
     }
 
     .rightdiv {
       display: flex;
       color: rgb(94, 94, 126);
+
+      a:link,
+      a:visited,
+      a:active,
+      a:focus {
+        text-decoration: none;
+        color: rgb(94, 94, 126);
+      }
 
       .materialicons {
         margin-right: 10px;

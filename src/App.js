@@ -1,15 +1,16 @@
+import { Route, Routes } from "react-router-dom";
+import SignPage from "./routes/SignPage";
 import TitleBar from "./layout/titlebar";
-import Header from "./layout/header";
-import Table from "./components/table/table";
-import NavBar from "./layout/navbar";
+import Home from "./routes/home-page";
 
 function App() {
   return (
     <div>
       <TitleBar />
-      <Header />
-      <NavBar />
-      <Table />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<SignPage />} />
+      </Routes>
     </div>
   );
 }

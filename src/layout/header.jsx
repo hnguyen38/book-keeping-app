@@ -1,8 +1,8 @@
-import AddToList from "../components/addBtn";
+import AddToList from "../components/addform/addBtn";
 import SearchBar from "../components/searchBar";
 import styles from "./header.module.scss";
 
-import AddForm from "../components/addForm";
+import AddForm from "../components/addform/addForm";
 
 import { useState } from "react";
 
