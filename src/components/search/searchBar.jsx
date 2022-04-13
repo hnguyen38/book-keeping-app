@@ -1,5 +1,5 @@
 import "./searchBar.scss";
-import "../icons/icons.scss";
+import "../../icons/icons.scss";
 
 function SearchBar() {
   return (

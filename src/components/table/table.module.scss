@@ -3,13 +3,9 @@
   justify-content: center;
 
   .table {
-    //margin: 10px;
-    padding-left: 2px;
     text-align: left;
     border-collapse: collapse;
-    width: 80vw;
-    //add responsive design here idk what tho
-    min-width: 1050px;
+    width: 95%;
     border: 1px solid rgba(94, 94, 126, 0.349);
     box-shadow: 3px 2px 5px rgba(94, 94, 126, 0.349);
 
@@ -23,7 +19,6 @@
       font-size: 13px;
 
       th {
-        position: relative;
         padding: 0.7rem 2rem;
 
         .icon {

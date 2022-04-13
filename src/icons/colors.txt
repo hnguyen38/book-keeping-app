@@ -10,6 +10,8 @@ font color = {
     purple (buttons, text) = color: rgb(110, 99, 211);
 }
 
+border = rgba(94, 94, 126, 0.349);
+
 dark purple
     rgb(10, 0, 102); = {
         side bar,

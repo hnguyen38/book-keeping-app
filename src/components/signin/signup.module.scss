@@ -1,9 +1,67 @@
-.sign-up {
+.signup {
+  width: 380px;
   display: flex;
   flex-direction: column;
-  width: 380px;
 
-  .title {
-    margin: 10px 0;
+  .head {
+    margin-bottom: 1rem;
+    .title {
+      margin: 10px 0;
+      font-family: "Source Sans Pro", sans-serif;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 3rem 0;
+
+    .signupBtn {
+      padding: 10px;
+      width: 8rem;
+      height: 3rem;
+      border: none;
+      background-color: black;
+      color: white;
+      font-family: "Source Sans Pro", sans-serif;
+
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.74);
+      }
+    }
+
+    .googleBtn {
+      padding: 10px;
+      width: 10rem;
+      border: none;
+      background-color: rgb(110, 99, 211);
+      color: white;
+      font-family: "Source Sans Pro", sans-serif;
+
+      &:hover {
+        cursor: pointer;
+        background-color: rgb(72, 61, 173);
+      }
+    }
+  }
+
+  p {
+    color: rgb(58, 58, 58);
+  }
+
+  label {
+    margin-top: 2rem;
+    color: rgb(58, 58, 58);
+  }
+  input {
+    padding: 0.7rem;
+    border: none;
+    border-bottom: 1px solid rgba(94, 94, 126, 0.349);
+    background-color: rgb(222, 222, 241);
+
+    &:focus {
+      outline: none;
+    }
   }
 }
