@@ -1,6 +1,9 @@
 import styles from "./signup.module.scss";
 import { useState } from "react";
-import { createAuthUserWithEmailandPassword } from "../../utils/firebase/firebase.utils";
+import {
+  createAuthUserWithEmailandPassword,
+  createUserDocFromAuth,
+} from "../../utils/firebase/firebase.utils";
 
 const signUpFormFields = {
   displayName: "",
@@ -15,15 +18,47 @@ function SignUp(props) {
 
   console.log(formField);
 
+  const resetForm = () => {
+    setFormField(signUpFormFields);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    //add code to create user
+    //confirm passwords match
+    if (password !== confirm) {
+      alert("Passwords don't match");
+      return;
+    }
+
+    try {
+      //see if authenticated
+      const { user } = await createAuthUserWithEmailandPassword(
+        email,
+        password
+      );
+
+      //create user doc
+      await createUserDocFromAuth(user, { displayName });
+      resetForm();
+    } catch (error) {
+      if (error.code === "auth/email-already-in-use") {
+        alert("Email already in use");
+      } else {
+        console.log("problem creating user", error);
+      }
+    }
   };
 
   function handleChange(event) {
+    //name comes from input name attribute
+    //value we want comes from value that is being passed in input
+    //changes are circular, value from state is value from input, when user types, handleChange() pushes that form field into state & state updates
     const { name, value } = event.target;
+    //spread formField & update appropriate field by taking input value and applying it to [name]
+    //example: displayName: {displayname} <-- typed by user
     setFormField({ ...formField, [name]: value });
   }
+
   return (
     <div className={styles.signup}>
       <div className={styles.head}>
@@ -71,10 +106,15 @@ function SignUp(props) {
         />
 
         <div className={styles.buttons}>
-          <button className={styles.signupBtn}>SIGN UP</button>
-          <button className={styles.googleBtn} onClick={props.googleBtn}>
-            SIGN UP WITH GOOGLE
+          <button type="submit" className={styles.signupBtn}>
+            SIGN UP
           </button>
+          {/* <button
+            className={styles.googleBtn}
+            onClick={props.googleBtn}
+          >
+            SIGN UP WITH GOOGLE
+          </button> */}
         </div>
       </form>
     </div>

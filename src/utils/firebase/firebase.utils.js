@@ -8,6 +8,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 
 //Step 2: set up firestore db
@@ -41,9 +42,10 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 //step 2
 export const db = getFirestore();
 
-export const createUserDocFromAuth = async (userAuth) => {
+export const createUserDocFromAuth = async (userAuth, additionalInfo) => {
   if (!userAuth) return;
   //lets us access user info with unique uid
+  //doc takes 3 arguments: database, collection (we're gonna call it users), & a unique id
   const userDocRef = doc(db, "users", userAuth.uid);
   console.log(userDocRef);
   //gets data from specified user
@@ -51,7 +53,7 @@ export const createUserDocFromAuth = async (userAuth) => {
   console.log(userSnapshot);
   console.log(userSnapshot.exists());
 
-  //if doesn't exist, doc is set with objects and stored in firebase
+  //if doesn't exist, set docs with objects and store in firebase
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
@@ -61,16 +63,27 @@ export const createUserDocFromAuth = async (userAuth) => {
         displayName,
         email,
         createdAt,
+        ...additionalInfo,
       });
     } catch (error) {
       console.log("error creating user", error.message);
     }
   }
+  //if it exists, we get the user doc
   return userDocRef;
 };
 
+//step 3 creating user (sign up)
 export const createAuthUserWithEmailandPassword = async (email, password) => {
   if (!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth, email, password);
+};
+
+//step 4 signing into existing account
+export const signInAuthUserWithEmailandPassword = async (email, password) => {
+  if (!email || !password) {
+    return;
+  }
+  return await signInWithEmailAndPassword(auth, email, password);
 };
