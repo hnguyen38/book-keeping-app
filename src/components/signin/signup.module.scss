@@ -1,67 +1,67 @@
 .signup {
-  width: 380px;
-  display: flex;
-  flex-direction: column;
-
   .head {
     margin-bottom: 1rem;
     .title {
       margin: 10px 0;
       font-family: "Source Sans Pro", sans-serif;
     }
+    p {
+      color: rgb(58, 58, 58);
+    }
   }
 
-  .buttons {
+  .form {
+    width: 380px;
     display: flex;
-    justify-content: space-between;
-    margin: 3rem 0;
+    flex-direction: column;
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin: 3rem 0;
 
-    .signupBtn {
-      padding: 10px;
-      width: 8rem;
-      height: 3rem;
-      border: none;
-      background-color: black;
-      color: white;
-      font-family: "Source Sans Pro", sans-serif;
+      .signupBtn {
+        padding: 10px;
+        width: 8rem;
+        height: 3rem;
+        border: none;
+        background-color: black;
+        color: white;
+        font-family: "Source Sans Pro", sans-serif;
 
-      &:hover {
-        cursor: pointer;
-        background-color: rgba(0, 0, 0, 0.74);
+        &:hover {
+          cursor: pointer;
+          background-color: rgba(0, 0, 0, 0.74);
+        }
+      }
+
+      .googleBtn {
+        padding: 10px;
+        width: 10rem;
+        border: none;
+        background-color: rgb(110, 99, 211);
+        color: white;
+        font-family: "Source Sans Pro", sans-serif;
+
+        &:hover {
+          cursor: pointer;
+          background-color: rgb(72, 61, 173);
+        }
       }
     }
 
-    .googleBtn {
-      padding: 10px;
-      width: 10rem;
-      border: none;
-      background-color: rgb(110, 99, 211);
-      color: white;
-      font-family: "Source Sans Pro", sans-serif;
-
-      &:hover {
-        cursor: pointer;
-        background-color: rgb(72, 61, 173);
-      }
+    label {
+      margin-top: 2rem;
+      color: rgb(58, 58, 58);
     }
-  }
+    input {
+      padding: 0.7rem;
+      border: none;
+      border-bottom: 1px solid rgba(94, 94, 126, 0.349);
+      background-color: rgb(247, 247, 247);
 
-  p {
-    color: rgb(58, 58, 58);
-  }
-
-  label {
-    margin-top: 2rem;
-    color: rgb(58, 58, 58);
-  }
-  input {
-    padding: 0.7rem;
-    border: none;
-    border-bottom: 1px solid rgba(94, 94, 126, 0.349);
-    background-color: rgb(247, 247, 247);
-
-    &:focus {
-      outline: none;
+      &:focus {
+        outline: none;
+      }
     }
   }
 }
