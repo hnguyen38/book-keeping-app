@@ -9,6 +9,8 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 //Step 2: set up firestore db
@@ -87,3 +89,10 @@ export const signInAuthUserWithEmailandPassword = async (email, password) => {
   }
   return await signInWithEmailAndPassword(auth, email, password);
 };
+
+export const signOutUser = async () => await signOut(auth);
+
+//open listener - using this in usercontext. permentent open listener and will give callback everytime auth state changes
+//need to tell when to stop listening when unmounts to prevent memory leaks
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback);

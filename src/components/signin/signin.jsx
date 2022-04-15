@@ -2,7 +2,6 @@ import styles from "./signin.module.scss";
 import {
   signInWithGooglePopup,
   signInAuthUserWithEmailandPassword,
-  createUserDocFromAuth,
 } from "../../utils/firebase/firebase.utils";
 
 import { useState } from "react";
@@ -12,7 +11,7 @@ const signInFormFields = {
   password: "",
 };
 
-function SignIn(props) {
+function SignIn() {
   const [formField, setFormField] = useState(signInFormFields);
   const { email, password } = formField;
 
@@ -20,15 +19,16 @@ function SignIn(props) {
     setFormField(signInFormFields);
   };
 
+  const signInWithGoogle = async () => {
+    await signInWithGooglePopup();
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailandPassword(
-        email,
-        password
-      );
-      console.log(response);
+      await signInAuthUserWithEmailandPassword(email, password);
+
       resetForm();
     } catch (error) {
       console.log(error);
@@ -49,12 +49,6 @@ function SignIn(props) {
     const { name, value } = event.target;
     setFormField({ ...formField, [name]: value });
   }
-
-  const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    const us = await createUserDocFromAuth(user);
-    console.log(us);
-  };
 
   return (
     <div className={styles.signin}>

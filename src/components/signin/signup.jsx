@@ -12,11 +12,9 @@ const signUpFormFields = {
   confirm: "",
 };
 
-function SignUp(props) {
+function SignUp() {
   const [formField, setFormField] = useState(signUpFormFields);
   const { displayName, email, password, confirm } = formField;
-
-  console.log(formField);
 
   const resetForm = () => {
     setFormField(signUpFormFields);
@@ -36,7 +34,6 @@ function SignUp(props) {
         email,
         password
       );
-
       //create user doc
       await createUserDocFromAuth(user, { displayName });
       resetForm();

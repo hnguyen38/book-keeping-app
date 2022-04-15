@@ -1,14 +1,13 @@
 import styles from "./titlebar.module.scss";
 import "../icons/icons.scss";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext } from "react";
+import { signOutUser } from "../utils/firebase/firebase.utils";
+
+import { UserContext } from "../context/usercontext";
 
 function TitleBar() {
-  const [signedIn, setSignIn] = useState(false);
-
-  function signinOrup() {
-    signedIn ? setSignIn(false) : setSignIn(true);
-  }
+  const { currentUser } = useContext(UserContext);
 
   return (
     <div className={styles.container}>
@@ -20,11 +19,19 @@ function TitleBar() {
           </h2>
         </div>
         <div className={styles.rightdiv}>
-          <span className={`${styles.materialicons} material-icons md-grey`}>
+          {/* <span className={`${styles.materialicons} material-icons md-grey`}>
             &#xe8fd;
-          </span>
-          <span onClick={() => signinOrup()}>
-            <Link to="signin">{signedIn ? "Sign Out" : "Sign In"}</Link>
+          </span> */}
+          <span>
+            {currentUser ? (
+              <span className={styles.sign} onClick={signOutUser}>
+                Sign Out
+              </span>
+            ) : (
+              <Link className={styles.sign} to="signin">
+                Sign In
+              </Link>
+            )}
           </span>
         </div>
       </div>
