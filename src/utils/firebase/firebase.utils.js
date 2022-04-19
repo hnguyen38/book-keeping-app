@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { async } from "@firebase/util";
+
 import { initializeApp } from "firebase/app";
 
 //Step 1: this is set up for google and user authentication to firebase
@@ -14,7 +14,13 @@ import {
 } from "firebase/auth";
 
 //Step 2: set up firestore db
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+} from "firebase/firestore";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -42,7 +48,7 @@ export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
 //step 2
-export const db = getFirestore();
+export const db = getFirestore(firebaseApp);
 
 export const createUserDocFromAuth = async (userAuth, additionalInfo) => {
   if (!userAuth) return;
@@ -71,6 +77,7 @@ export const createUserDocFromAuth = async (userAuth, additionalInfo) => {
       console.log("error creating user", error.message);
     }
   }
+
   //if it exists, we get the user doc
   return userDocRef;
 };
@@ -92,7 +99,23 @@ export const signInAuthUserWithEmailandPassword = async (email, password) => {
 
 export const signOutUser = async () => await signOut(auth);
 
-//open listener - using this in usercontext. permentent open listener and will give callback everytime auth state changes
+//open listener - using this in usercontext. permenent open listener and will give callback everytime auth state changes
 //need to tell when to stop listening when unmounts to prevent memory leaks
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
+
+//set data collection in each user
+export const createUserDataFromAuth = async (userAuth, inputs) => {
+  //lets us access user info with unique uid
+  if (!userAuth) {
+    return alert("Sign In to Add Item");
+  }
+  //doc takes 3 arguments: database, collection (we're gonna call it users), & a unique id
+  const userDataRef = doc(collection(db, "users", userAuth.uid, "data"));
+  console.log(userDataRef);
+  try {
+    await setDoc(userDataRef, { ...inputs });
+  } catch (error) {
+    console.log("error creating user", error.message);
+  }
+};

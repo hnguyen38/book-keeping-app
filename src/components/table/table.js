@@ -1,5 +1,7 @@
 import ListItem from "./listItem";
 import styles from "./table.module.scss";
+import AddForm from "../addform/addForm";
+import { useState } from "react";
 
 function Table() {
   return (
@@ -30,9 +32,7 @@ function Table() {
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          <ListItem />
-        </tbody>
+        <tbody></tbody>
       </table>
     </div>
   );

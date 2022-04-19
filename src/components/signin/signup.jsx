@@ -106,12 +106,6 @@ function SignUp() {
           <button type="submit" className={styles.signupBtn}>
             SIGN UP
           </button>
-          {/* <button
-            className={styles.googleBtn}
-            onClick={props.googleBtn}
-          >
-            SIGN UP WITH GOOGLE
-          </button> */}
         </div>
       </form>
     </div>

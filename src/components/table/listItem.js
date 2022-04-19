@@ -1,13 +1,13 @@
 import styles from "./listItem.module.scss";
 
-function ListItem() {
+function ListItem({ locationText, nameText, dateText, statusText, noteText }) {
   return (
     <tr className={styles.row}>
-      <td>Lincoln, NE</td>
-      <td className={styles.name}>Company X</td>
-      <td>04/15/2022</td>
-      <td>In progress</td>
-      <td>this is a note about the..</td>
+      <td>{locationText}</td>
+      <td className={styles.name}>{nameText}</td>
+      <td>{dateText}</td>
+      <td>{statusText}</td>
+      <td>{noteText}</td>
       <td>
         <span className={styles.options}>⋮</span>
       </td>
