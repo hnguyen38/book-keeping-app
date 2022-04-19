@@ -110,7 +110,7 @@ export const createUserDataFromAuth = async (userAuth, inputs) => {
   if (!userAuth) {
     return alert("Sign In to Add Item");
   }
-  //doc takes 3 arguments: database, collection (we're gonna call it users), & a unique id
+  //wrapping collection in doc creates unique id for data collection
   const userDataRef = doc(collection(db, "users", userAuth.uid, "data"));
   console.log(userDataRef);
   try {

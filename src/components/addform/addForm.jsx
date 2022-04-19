@@ -26,7 +26,7 @@ function AddForm({ onCancel }) {
       status: statusInput,
       note: noteInput,
     };
-    return createUserDataFromAuth(currentUser, { inputData });
+    return createUserDataFromAuth(currentUser, { ...inputData });
   };
 
   return (
