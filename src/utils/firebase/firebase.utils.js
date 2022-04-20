@@ -85,7 +85,6 @@ export const createUserDocFromAuth = async (userAuth, additionalInfo) => {
 //step 3 creating user (sign up)
 export const createAuthUserWithEmailandPassword = async (email, password) => {
   if (!email || !password) return;
-
   return await createUserWithEmailAndPassword(auth, email, password);
 };
 
@@ -116,6 +115,11 @@ export const createUserDataFromAuth = async (userAuth, inputs) => {
   try {
     await setDoc(userDataRef, { ...inputs });
   } catch (error) {
-    console.log("error creating user", error.message);
+    console.log("error creating item", error.message);
   }
+
+  //gets data from specified user data collection
+  const userDataSnapshot = await getDoc(userDataRef);
+  console.log(userDataSnapshot);
+  console.log(userDataSnapshot.exists());
 };

@@ -1,6 +1,6 @@
 import styles from "./titlebar.module.scss";
 import "../icons/icons.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { signOutUser } from "../utils/firebase/firebase.utils";
 
@@ -8,6 +8,12 @@ import { UserContext } from "../context/usercontext";
 
 function TitleBar() {
   const { currentUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  function signOut() {
+    signOutUser();
+    navigate("/");
+  }
 
   return (
     <div className={styles.container}>
@@ -24,14 +30,10 @@ function TitleBar() {
           </span> */}
           <span>
             {currentUser ? (
-              <span className={styles.sign} onClick={signOutUser}>
+              <span className={styles.sign} onClick={signOut}>
                 Sign Out
               </span>
-            ) : (
-              <Link className={styles.sign} to="signin">
-                Sign In
-              </Link>
-            )}
+            ) : null}
           </span>
         </div>
       </div>

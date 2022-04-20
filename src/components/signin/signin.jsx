@@ -5,6 +5,7 @@ import {
 } from "../../utils/firebase/firebase.utils";
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const signInFormFields = {
   email: "",
@@ -14,6 +15,7 @@ const signInFormFields = {
 function SignIn() {
   const [formField, setFormField] = useState(signInFormFields);
   const { email, password } = formField;
+  const navigate = useNavigate();
 
   const resetForm = () => {
     setFormField(signInFormFields);
@@ -21,6 +23,7 @@ function SignIn() {
 
   const signInWithGoogle = async () => {
     await signInWithGooglePopup();
+    navigate("/home");
   };
 
   const handleSubmit = async (event) => {
@@ -28,8 +31,8 @@ function SignIn() {
 
     try {
       await signInAuthUserWithEmailandPassword(email, password);
-
       resetForm();
+      navigate("/home");
     } catch (error) {
       console.log(error);
       switch (error.code) {
