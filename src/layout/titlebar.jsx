@@ -1,6 +1,6 @@
 import styles from "./titlebar.module.scss";
 import "../icons/icons.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { signOutUser } from "../utils/firebase/firebase.utils";
 
@@ -20,9 +20,7 @@ function TitleBar() {
       <div className={styles.nav}>
         <div className={styles.header}>
           <span className="material-icons md-24 md-grey">&#xe431;</span>
-          <h2 className={styles.title}>
-            <Link to="/">Book</Link>
-          </h2>
+          <h2 className={styles.title}>Book</h2>
         </div>
         <div className={styles.rightdiv}>
           {/* <span className={`${styles.materialicons} material-icons md-grey`}>

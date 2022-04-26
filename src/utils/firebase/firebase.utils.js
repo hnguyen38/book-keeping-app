@@ -1,5 +1,4 @@
 // Import the functions you need from the SDKs you need
-
 import { initializeApp } from "firebase/app";
 
 //Step 1: this is set up for google and user authentication to firebase
@@ -20,6 +19,9 @@ import {
   getDoc,
   setDoc,
   collection,
+  query,
+  getDocs,
+  where,
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -48,7 +50,7 @@ export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
 //step 2
-export const db = getFirestore(firebaseApp);
+export const db = getFirestore();
 
 export const createUserDocFromAuth = async (userAuth, additionalInfo) => {
   if (!userAuth) return;
@@ -110,6 +112,7 @@ export const createUserDataFromAuth = async (userAuth, inputs) => {
     return alert("Sign In to Add Item");
   }
   //wrapping collection in doc creates unique id for data collection
+  //creates new collection called 'data' in each 'users'
   const userDataRef = doc(collection(db, "users", userAuth.uid, "data"));
   console.log(userDataRef);
   try {
@@ -117,9 +120,15 @@ export const createUserDataFromAuth = async (userAuth, inputs) => {
   } catch (error) {
     console.log("error creating item", error.message);
   }
+  return userDataRef;
+};
 
-  //gets data from specified user data collection
-  const userDataSnapshot = await getDoc(userDataRef);
-  console.log(userDataSnapshot);
-  console.log(userDataSnapshot.exists());
+//get data for populating table
+export const getUserData = async (userAuth) => {
+  //query docs in collection to get data: users collection -> data collection
+  const dataSnapshot = await getDocs(
+    collection(db, `users/${userAuth.uid}/data`)
+  );
+
+  return dataSnapshot;
 };

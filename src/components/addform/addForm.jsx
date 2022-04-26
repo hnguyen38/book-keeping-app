@@ -8,7 +8,7 @@ const addFormFields = {
   location: "",
   name: "",
   date: "",
-  status: "",
+  status: "In Progress",
   note: "",
 };
 
@@ -23,7 +23,10 @@ function AddForm({ onCancel }) {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    await createUserDataFromAuth(currentUser, { ...inputData });
+    const response = await createUserDataFromAuth(currentUser, {
+      ...inputData,
+    });
+    console.log(response);
     resetForm();
   };
 
