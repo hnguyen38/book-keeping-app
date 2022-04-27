@@ -12,8 +12,6 @@ function Table() {
   const { currentUser } = useContext(UserContext);
   const [list, setList] = useState([]);
 
-  //fix this use effect function some how
-  //use firebase functions!
   useEffect(() => {
     const allItems = [];
     const userData = async () => {
@@ -21,7 +19,6 @@ function Table() {
 
       response.forEach((doc) => {
         const text = doc.data();
-        // console.log(text);
         const item = {
           location: text.location,
           name: text.name,
@@ -35,30 +32,7 @@ function Table() {
       setList(allItems);
     };
     userData();
-  });
-
-  // useEffect(() => {
-  //   const userData = async () => {
-  //     const response = await getUserData(currentUser);
-
-  //     const allItems = [];
-  //     response.forEach((doc) => {
-  //       const text = doc.data();
-  //       // console.log(text);
-  //       const item = {
-  //         location: text.location,
-  //         name: text.name,
-  //         date: text.date,
-  //         status: text.status,
-  //         note: text.note,
-  //         key: doc.id,
-  //       };
-  //       allItems.push(item);
-  //     });
-  //     setList(allItems);
-  //   };
-  //   userData();
-  // });
+  }, [list]);
 
   return (
     <div className={styles.container}>
@@ -88,7 +62,7 @@ function Table() {
             <th></th>
           </tr>
         </thead>
-        <AllListItems allItems={list} key={HTMLTableRowElement.id} />
+        <AllListItems allItems={list} />
       </table>
     </div>
   );

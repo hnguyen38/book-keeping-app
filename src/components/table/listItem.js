@@ -1,6 +1,20 @@
 import styles from "./listItem.module.scss";
+import { useState } from "react";
+import DropDown from "./dropdown";
 
 function ListItem(props) {
+  const [drop, setDrop] = useState(false);
+
+  function choices() {
+    if (drop) {
+      setDrop(true);
+      return <DropDown />;
+    } else {
+      setDrop(false);
+      return;
+    }
+  }
+
   return (
     <tr className={styles.row} key={props.key}>
       <td>{props.location}</td>

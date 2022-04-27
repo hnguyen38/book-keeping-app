@@ -5,15 +5,12 @@ import "./index.css";
 import App from "./App";
 import { UserProvider } from "./context/usercontext";
 import { BrowserRouter } from "react-router-dom";
-import { DataProvider } from "./context/datacontext";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <DataProvider>
-          <App />
-        </DataProvider>
+        <App />
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,
