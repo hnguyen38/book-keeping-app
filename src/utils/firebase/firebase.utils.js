@@ -97,7 +97,10 @@ export const signInAuthUserWithEmailandPassword = async (email, password) => {
   return await signInWithEmailAndPassword(auth, email, password);
 };
 
-export const signOutUser = async () => await signOut(auth);
+export const signOutUser = async () => {
+  //firebase signout
+  await signOut(auth);
+};
 
 //open listener - using this in usercontext. permenent open listener and will give callback everytime auth state changes
 //need to tell when to stop listening when unmounts to prevent memory leaks
@@ -125,6 +128,9 @@ export const createUserDataFromAuth = async (userAuth, inputs) => {
 //get data for populating table
 export const getUserData = async (userAuth) => {
   //query docs in collection to get data: users collection -> data collection
+  if (!userAuth) {
+    return;
+  }
   try {
     const dataSnapshot = await getDocs(
       collection(db, `users/${userAuth.uid}/data`)

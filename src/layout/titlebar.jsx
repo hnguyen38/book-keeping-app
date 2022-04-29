@@ -13,6 +13,7 @@ function TitleBar() {
   function signOut() {
     signOutUser();
     navigate("/");
+    window.location.reload();
   }
 
   return (

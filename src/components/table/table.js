@@ -18,6 +18,7 @@ function Table() {
     await deleteDoc(dataDoc);
     setMounted(true);
   };
+  console.log(currentUser);
 
   function updateHandler() {
     return console.log("update");
@@ -51,20 +52,22 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {list.map((item) => (
-            <ListItem
-              key={item.id}
-              location={item.location}
-              name={item.name}
-              date={item.date}
-              status={item.status}
-              note={item.note}
-              onDelete={() => {
-                deleteDocData(item.id);
-              }}
-              onUpdate={updateHandler}
-            />
-          ))}
+          {currentUser
+            ? list.map((item) => (
+                <ListItem
+                  key={item.id}
+                  location={item.location}
+                  name={item.name}
+                  date={item.date}
+                  status={item.status}
+                  note={item.note}
+                  onDelete={() => {
+                    deleteDocData(item.id);
+                  }}
+                  onUpdate={updateHandler}
+                />
+              ))
+            : null}
         </tbody>
       </table>
     </div>
