@@ -1,8 +1,8 @@
 import styles from "./addForm.module.scss";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { createUserDataFromAuth } from "../../utils/firebase/firebase.utils";
 import { UserContext } from "../../context/usercontext";
-import { useState } from "react";
+import { MountedContext } from "../../context/mountedContext";
 
 const addFormFields = {
   location: "",
@@ -16,6 +16,7 @@ function AddForm({ onCancel }) {
   const { currentUser } = useContext(UserContext);
   const [inputData, setInputForm] = useState(addFormFields);
   const { location, name, date, status, note } = inputData;
+  const { mounted, setMounted } = useContext(MountedContext);
 
   function resetForm() {
     setInputForm(addFormFields);
@@ -28,6 +29,7 @@ function AddForm({ onCancel }) {
     });
     console.log(response);
     resetForm();
+    setMounted(true);
   };
 
   function handleChange(event) {

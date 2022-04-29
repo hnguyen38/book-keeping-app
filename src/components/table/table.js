@@ -1,38 +1,48 @@
 import ListItem from "./listItem";
 import styles from "./table.module.scss";
-import AddForm from "../addform/addForm";
-import { useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../../context/usercontext";
 import { getUserData } from "../../utils/firebase/firebase.utils";
-import AllListItems from "./tbody";
-import { useEffect } from "react";
-import { datas, DataContext } from "../../context/datacontext";
+import { MountedContext } from "../../context/mountedContext";
 
 function Table() {
   const { currentUser } = useContext(UserContext);
   const [list, setList] = useState([]);
+  const { mounted, setMounted } = useContext(MountedContext);
 
   useEffect(() => {
-    const allItems = [];
     const userData = async () => {
-      const response = await getUserData(currentUser);
-
-      response.forEach((doc) => {
-        const text = doc.data();
-        const item = {
-          location: text.location,
-          name: text.name,
-          date: text.date,
-          status: text.status,
-          note: text.note,
-          key: doc.id,
-        };
-        allItems.push(item);
-      });
-      setList(allItems);
+      const allItems = [];
+      try {
+        const response = await getUserData(currentUser);
+        response.docs.map((doc) => {
+          const text = doc.data();
+          const key = doc.id;
+          console.log(text);
+          const item = {
+            location: text.location,
+            name: text.name,
+            date: text.date,
+            status: text.status,
+            note: text.note,
+            id: key,
+          };
+          allItems.push(item);
+        });
+        //setting allItems to list gives list all the properties in 'item' object
+        setList(allItems);
+      } catch (e) {
+        console.log(e);
+      }
     };
-    userData();
-  }, [list]);
+
+    if (mounted) {
+      userData();
+    }
+    return () => {
+      setMounted(false);
+    };
+  }, [list, currentUser, mounted, setMounted]);
 
   return (
     <div className={styles.container}>
@@ -62,7 +72,18 @@ function Table() {
             <th></th>
           </tr>
         </thead>
-        <AllListItems allItems={list} />
+        <tbody>
+          {list.map((item) => (
+            <ListItem
+              key={item.id}
+              location={item.location}
+              name={item.name}
+              date={item.date}
+              status={item.status}
+              note={item.note}
+            />
+          ))}
+        </tbody>
       </table>
     </div>
   );

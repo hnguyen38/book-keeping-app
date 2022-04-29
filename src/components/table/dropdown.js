@@ -1,8 +1,17 @@
+import styles from "./dropdown.module.scss";
+import "../../icons/icons.scss";
+
 function DropDown() {
-  <select className={styles.drop}>
-    <option>Edit</option>
-    <option>Delete</option>
-  </select>;
+  function editHandler() {}
+
+  function deleteHandler() {}
+
+  return (
+    <div className={styles.drop}>
+      <span className={`material-icons ${styles.edit}`}>&#xe3c9;</span>
+      <span className={`material-icons ${styles.delete}`}>&#xe872;</span>
+    </div>
+  );
 }
 
 export default DropDown;

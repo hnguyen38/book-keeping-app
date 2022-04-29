@@ -1,4 +1,5 @@
 // Import the functions you need from the SDKs you need
+
 import { initializeApp } from "firebase/app";
 
 //Step 1: this is set up for google and user authentication to firebase
@@ -19,9 +20,7 @@ import {
   getDoc,
   setDoc,
   collection,
-  query,
   getDocs,
-  where,
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -50,7 +49,7 @@ export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
 //step 2
-export const db = getFirestore();
+export const db = getFirestore(firebaseApp);
 
 export const createUserDocFromAuth = async (userAuth, additionalInfo) => {
   if (!userAuth) return;
@@ -78,10 +77,10 @@ export const createUserDocFromAuth = async (userAuth, additionalInfo) => {
     } catch (error) {
       console.log("error creating user", error.message);
     }
+  } //if it exists, we get the user doc
+  else {
+    return userDocRef;
   }
-
-  //if it exists, we get the user doc
-  return userDocRef;
 };
 
 //step 3 creating user (sign up)
@@ -126,9 +125,29 @@ export const createUserDataFromAuth = async (userAuth, inputs) => {
 //get data for populating table
 export const getUserData = async (userAuth) => {
   //query docs in collection to get data: users collection -> data collection
-  const dataSnapshot = await getDocs(
-    collection(db, `users/${userAuth.uid}/data`)
-  );
-
-  return dataSnapshot;
+  try {
+    const dataSnapshot = await getDocs(
+      collection(db, `users/${userAuth.uid}/data`)
+    );
+    console.log(dataSnapshot);
+    return dataSnapshot;
+  } catch (e) {
+    console.log("Error fetching data", e);
+  }
 };
+
+// //delete function for doc
+// export const deleteDoc = async (id, userAuth) => {
+//   const dataDoc = doc(db, 'users', userAuth.uid, 'data', id);
+//   await deleteDoc(dataDoc);
+// }
+
+// export const updateDoc = async (id, userAuth) => {
+//   const dataDoc = doc(db, 'users', userAuth.uid, 'data', id);
+//  //what do i want updated
+
+//  //returns all docs in data
+//  //get only current doc
+//  await getUserData
+//   await updateDoc(dataDoc);
+// }
