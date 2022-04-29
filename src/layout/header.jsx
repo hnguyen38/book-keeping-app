@@ -4,10 +4,11 @@ import styles from "./header.module.scss";
 
 import AddForm from "../components/addform/addForm";
 
-import { useState } from "react";
+import { useContext } from "react";
+import { FormPopupContext } from "../context/FormPopupContext";
 
 function Header() {
-  const [popup, setPopup] = useState();
+  const { popup, setPopup } = useContext(FormPopupContext);
 
   function modal() {
     return popup ? setPopup(false) : setPopup(true);

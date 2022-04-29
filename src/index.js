@@ -7,6 +7,7 @@ import { UserProvider } from "./context/usercontext";
 import { BrowserRouter } from "react-router-dom";
 import { MountedProvider } from "./context/mountedContext";
 import { ListProvider } from "./context/listContext";
+import { FormPopupProvider } from "./context/FormPopupContext";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,7 +15,9 @@ ReactDOM.render(
       <UserProvider>
         <MountedProvider>
           <ListProvider>
-            <App />
+            <FormPopupProvider>
+              <App />
+            </FormPopupProvider>
           </ListProvider>
         </MountedProvider>
       </UserProvider>

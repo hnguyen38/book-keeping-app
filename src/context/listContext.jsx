@@ -9,6 +9,7 @@ import { MountedContext } from "./mountedContext";
 export const ListContext = createContext({});
 
 export const ListProvider = ({ children }) => {
+  //list holds all the properties of items!
   const [list, setList] = useState([]);
   const { currentUser } = useContext(UserContext);
   const { mounted, setMounted } = useContext(MountedContext);
@@ -21,7 +22,6 @@ export const ListProvider = ({ children }) => {
         response.docs.map((doc) => {
           const text = doc.data();
           const key = doc.id;
-          console.log(text);
           const item = {
             location: text.location,
             name: text.name,
@@ -32,7 +32,7 @@ export const ListProvider = ({ children }) => {
           };
           allItems.push(item);
         });
-        //setting allItems to list gives list all the properties in 'item' object
+        //setting allItems to list gives each doc in list all the properties in 'item' object
         setList(allItems);
       } catch (e) {
         console.log(e);

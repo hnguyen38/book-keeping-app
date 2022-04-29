@@ -136,12 +136,6 @@ export const getUserData = async (userAuth) => {
   }
 };
 
-// //delete function for doc
-// export const deleteDoc = async (id, userAuth) => {
-//   const dataDoc = doc(db, 'users', userAuth.uid, 'data', id);
-//   await deleteDoc(dataDoc);
-// }
-
 // export const updateDoc = async (id, userAuth) => {
 //   const dataDoc = doc(db, 'users', userAuth.uid, 'data', id);
 //  //what do i want updated

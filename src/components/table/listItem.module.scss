@@ -15,11 +15,21 @@
     font-weight: bold;
   }
 
-  //font size affects verticle padding
-  .options {
-    font-size: 25px;
-    &:hover {
-      cursor: pointer;
+  .drop {
+    display: flex;
+    justify-content: flex-end;
+
+    .edit {
+      margin-right: 1rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .delete {
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

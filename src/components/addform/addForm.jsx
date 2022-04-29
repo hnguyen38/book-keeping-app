@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { createUserDataFromAuth } from "../../utils/firebase/firebase.utils";
 import { UserContext } from "../../context/usercontext";
 import { MountedContext } from "../../context/mountedContext";
+import { FormPopupContext } from "../../context/FormPopupContext";
 
 const addFormFields = {
   location: "",
@@ -12,11 +13,12 @@ const addFormFields = {
   note: "",
 };
 
-function AddForm({ onCancel }) {
+function AddForm({ onCancel, closeForm }) {
   const { currentUser } = useContext(UserContext);
   const [inputData, setInputForm] = useState(addFormFields);
   const { location, name, date, status, note } = inputData;
   const { setMounted } = useContext(MountedContext);
+  const { setPopup } = useContext(FormPopupContext);
 
   function resetForm() {
     setInputForm(addFormFields);
@@ -24,11 +26,13 @@ function AddForm({ onCancel }) {
 
   const submitHandler = async (event) => {
     event.preventDefault();
+
     const response = await createUserDataFromAuth(currentUser, {
       ...inputData,
     });
     console.log(response);
     resetForm();
+    setPopup(false);
     setMounted(true);
   };
 
@@ -100,7 +104,7 @@ function AddForm({ onCancel }) {
             cols="30"
           />
         </div>
-        <div className={styles.btn}>
+        <div className={styles.btn} onClick={closeForm}>
           <button className={styles.button}>Add Item</button>
           <span className={styles.cancel} onClick={onCancel}>
             Cancel

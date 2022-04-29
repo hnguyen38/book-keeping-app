@@ -1,6 +1,5 @@
 import styles from "./listItem.module.scss";
-import { useState } from "react";
-import DropDown from "./dropdown";
+import "../../icons/icons.scss";
 
 function ListItem(props) {
   return (
@@ -10,8 +9,19 @@ function ListItem(props) {
       <td>{props.date}</td>
       <td>{props.status}</td>
       <td>{props.note}</td>
-      <td>
-        <DropDown />
+      <td className={styles.drop}>
+        <span
+          className={`material-icons ${styles.edit}`}
+          onClick={props.onUpdate}
+        >
+          &#xe3c9;
+        </span>
+        <span
+          className={`material-icons ${styles.delete}`}
+          onClick={props.onDelete}
+        >
+          &#xe872;
+        </span>
       </td>
     </tr>
   );
