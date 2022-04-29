@@ -16,7 +16,7 @@ function AddForm({ onCancel }) {
   const { currentUser } = useContext(UserContext);
   const [inputData, setInputForm] = useState(addFormFields);
   const { location, name, date, status, note } = inputData;
-  const { mounted, setMounted } = useContext(MountedContext);
+  const { setMounted } = useContext(MountedContext);
 
   function resetForm() {
     setInputForm(addFormFields);
