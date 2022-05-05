@@ -24,9 +24,6 @@ function TitleBar() {
           <h2 className={styles.title}>Book</h2>
         </div>
         <div className={styles.rightdiv}>
-          {/* <span className={`${styles.materialicons} material-icons md-grey`}>
-            &#xe8fd;
-          </span> */}
           <span>
             {currentUser ? (
               <span className={styles.sign} onClick={signOut}>

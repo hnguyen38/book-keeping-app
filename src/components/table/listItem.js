@@ -1,29 +1,31 @@
-import styles from "./listItem.module.scss";
-import "../../icons/icons.scss";
+import { ListContext } from "../../context/listContext";
+import { UserContext } from "../../context/usercontext";
+import { MountedContext } from "../../context/mountedContext";
 
-function ListItem(props) {
+import { useContext, useState } from "react";
+import Rows from "./Rows";
+import { deleteDocData, docDataRef } from "../../utils/firebase/firebase.utils";
+
+function ListItem({ deleteHandler, onSort }) {
+  const { list } = useContext(ListContext);
+
   return (
-    <tr className={styles.row} key={props.key}>
-      <td>{props.location}</td>
-      <td className={styles.name}>{props.name}</td>
-      <td>{props.date}</td>
-      <td>{props.status}</td>
-      <td>{props.note}</td>
-      <td className={styles.drop}>
-        <span
-          className={`material-icons ${styles.edit}`}
-          onClick={props.onUpdate}
-        >
-          &#xe3c9;
-        </span>
-        <span
-          className={`material-icons ${styles.delete}`}
-          onClick={props.onDelete}
-        >
-          &#xe872;
-        </span>
-      </td>
-    </tr>
+    <tbody>
+      {list.map((item) => (
+        <Rows
+          key={item.id}
+          location={item.location}
+          name={item.name}
+          date={item.date}
+          status={item.status}
+          note={item.note}
+          onDelete={() => {
+            deleteHandler(item.id);
+          }}
+          onSort={onSort}
+        />
+      ))}
+    </tbody>
   );
 }
 

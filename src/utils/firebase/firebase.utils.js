@@ -21,6 +21,7 @@ import {
   setDoc,
   collection,
   getDocs,
+  deleteDoc,
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -142,12 +143,15 @@ export const getUserData = async (userAuth) => {
   }
 };
 
-// export const updateDoc = async (id, userAuth) => {
-//   const dataDoc = doc(db, 'users', userAuth.uid, 'data', id);
-//  //what do i want updated
+//data doc reference
+export const docDataRef = async (userAuth, id) => {
+  const dataDoc = doc(db, `users/${userAuth.uid}/data/${id}`);
+  const response = await getDoc(dataDoc);
+  return response.data();
+};
 
-//  //returns all docs in data
-//  //get only current doc
-//  await getUserData
-//   await updateDoc(dataDoc);
-// }
+//delete doc
+export const deleteDocData = async (userAuth, id) => {
+  const dataDoc = doc(db, `users/${userAuth.uid}/data/${id}`);
+  return await deleteDoc(dataDoc);
+};

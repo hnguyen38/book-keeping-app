@@ -2,6 +2,12 @@
   display: flex;
   justify-content: center;
 
+  .popup {
+    position: absolute;
+    left: 0;
+    top: 4.2em;
+  }
+
   .table {
     text-align: left;
     border-collapse: collapse;
@@ -20,9 +26,17 @@
 
       th {
         padding: 0.7rem 2rem;
-
         .icon {
           position: absolute;
+        }
+      }
+
+      .location,
+      .name,
+      .date,
+      .status {
+        &:hover {
+          cursor: pointer;
         }
       }
     }

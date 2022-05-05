@@ -13,7 +13,7 @@ const addFormFields = {
   note: "",
 };
 
-function AddForm({ onCancel, closeForm }) {
+function AddForm({ onCancel }) {
   const { currentUser } = useContext(UserContext);
   const [inputData, setInputForm] = useState(addFormFields);
   const { location, name, date, status, note } = inputData;
@@ -104,7 +104,7 @@ function AddForm({ onCancel, closeForm }) {
             cols="30"
           />
         </div>
-        <div className={styles.btn} onClick={closeForm}>
+        <div className={styles.btn}>
           <button className={styles.button}>Add Item</button>
           <span className={styles.cancel} onClick={onCancel}>
             Cancel

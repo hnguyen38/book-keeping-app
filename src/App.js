@@ -2,8 +2,15 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import SignPage from "./routes/SignPage";
 import TitleBar from "./layout/titlebar";
 import Home from "./routes/home-page";
+import { signOutUser } from "./utils/firebase/firebase.utils";
 
 function App() {
+  //log out user on closed tab
+  // window.addEventListener("beforeunload", function (e) {
+  //   e.preventDefault();
+  //   signOutUser();
+  // });
+
   return (
     <div>
       <TitleBar />
