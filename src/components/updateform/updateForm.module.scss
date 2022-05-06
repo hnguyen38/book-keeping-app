@@ -1,0 +1,107 @@
+.container {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.247);
+  position: fixed;
+  margin-top: -157px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+
+  .info {
+    color: white;
+    background-color: rgb(204, 204, 228);
+    padding: 0.4rem 0.5rem;
+    border: none;
+    border-radius: 5px;
+    font-family: "Source Sans Pro", sans-serif;
+    // width: 200px;
+    font-size: 15px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(174, 174, 211);
+    }
+  }
+
+  .form {
+    background-color: white;
+    font-family: "Source Sans Pro", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 4rem;
+    padding: 0 5rem;
+    border-radius: 10px;
+    box-shadow: -0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.212);
+    min-height: 820px;
+
+    div {
+      margin: 20px;
+    }
+
+    label {
+      font-size: 15px;
+      color: rgb(94, 94, 126);
+    }
+
+    input,
+    select,
+    textarea {
+      font-family: "Source Sans Pro", sans-serif;
+      border: none;
+      border-bottom: 1px solid rgb(94, 94, 126);
+      color: rgb(94, 94, 126);
+      font-size: 23px;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        color: rgb(222, 222, 241);
+      }
+    }
+
+    .btn {
+      display: flex;
+      justify-content: space-between;
+      .button {
+        color: white;
+
+        background-color: rgb(110, 99, 211);
+        padding: 0.4rem 0.5rem;
+        border: none;
+        border-radius: 5px;
+        font-family: "Source Sans Pro", sans-serif;
+        width: 100px;
+        font-size: 15px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: rgb(111, 103, 170);
+        }
+      }
+      .cancel {
+        color: white;
+        background-color: rgb(208, 208, 212);
+        padding: 0.4rem 0.5rem;
+        border: none;
+        border-radius: 5px;
+        font-family: "Source Sans Pro", sans-serif;
+        width: 100px;
+        font-size: 15px;
+        text-align: center;
+
+        &:hover {
+          cursor: pointer;
+          background-color: rgb(169, 169, 172);
+        }
+      }
+    }
+  }
+}

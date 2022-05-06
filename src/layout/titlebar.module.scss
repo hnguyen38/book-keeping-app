@@ -28,6 +28,10 @@
       display: flex;
       color: rgb(94, 94, 126);
 
+      .user {
+        margin-right: 1rem;
+      }
+
       a:link,
       a:visited,
       a:active,
@@ -41,6 +45,7 @@
       }
 
       .sign {
+        margin-left: 1rem;
         &:hover {
           cursor: pointer;
         }

@@ -4,20 +4,18 @@ import { useContext, useState } from "react";
 
 import { MountedContext } from "../../context/mountedContext";
 import { UserContext } from "../../context/usercontext";
+import { UpdateFormContext } from "../../context/updateContext";
 import { deleteDocData } from "../../utils/firebase/firebase.utils";
 import { ListContext } from "../../context/listContext";
+import ListItem from "./ListItem";
+import UpdateForm from "../updateform/updateForm";
 
 function Table() {
   const { setMounted } = useContext(MountedContext);
   const { currentUser } = useContext(UserContext);
   const { list, setList } = useContext(ListContext);
   const [order, setOrder] = useState();
-
-  const deleteHandler = async (id) => {
-    alert("Item is being deleted...");
-    await deleteDocData(currentUser, id);
-    setMounted(true);
-  };
+  const { updatePopup, setUpdatePopup } = useContext(UpdateFormContext);
 
   const locationSortHandler = () => {
     if (order) {
@@ -101,6 +99,9 @@ function Table() {
 
   return (
     <div className={styles.container}>
+      {updatePopup ? (
+        <UpdateForm onCancel={() => setUpdatePopup(false)} />
+      ) : null}
       <table className={styles.table}>
         <thead>
           <tr className={styles.headrow}>
@@ -132,22 +133,7 @@ function Table() {
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          {list.map((item) => (
-            <Rows
-              key={item.id}
-              id={item.id}
-              location={item.location}
-              name={item.name}
-              date={item.date}
-              status={item.status}
-              note={item.note}
-              onDelete={() => {
-                deleteHandler(item.id);
-              }}
-            />
-          ))}
-        </tbody>
+        <ListItem />
       </table>
     </div>
   );

@@ -26,9 +26,13 @@ function TitleBar() {
         <div className={styles.rightdiv}>
           <span>
             {currentUser ? (
-              <span className={styles.sign} onClick={signOut}>
-                Sign Out
-              </span>
+              <div>
+                <span className={styles.user}>{currentUser.email}</span>
+                {"|"}
+                <span className={styles.sign} onClick={signOut}>
+                  Sign Out
+                </span>
+              </div>
             ) : null}
           </span>
         </div>

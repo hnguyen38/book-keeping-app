@@ -8,6 +8,8 @@ import { BrowserRouter } from "react-router-dom";
 import { MountedProvider } from "./context/mountedContext";
 import { ListProvider } from "./context/listContext";
 import { FormPopupProvider } from "./context/FormPopupContext";
+import { ItemProvider } from "./context/itemContext";
+import { UpdateFormProvider } from "./context/updateContext";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,9 +17,13 @@ ReactDOM.render(
       <UserProvider>
         <MountedProvider>
           <ListProvider>
-            <FormPopupProvider>
-              <App />
-            </FormPopupProvider>
+            <ItemProvider>
+              <UpdateFormProvider>
+                <FormPopupProvider>
+                  <App />
+                </FormPopupProvider>
+              </UpdateFormProvider>
+            </ItemProvider>
           </ListProvider>
         </MountedProvider>
       </UserProvider>

@@ -11,6 +11,12 @@ function Rows(props) {
       <td>{props.note}</td>
       <td className={styles.drop}>
         <span
+          className={`material-icons ${styles.edit}`}
+          onClick={props.onUpdate}
+        >
+          &#xe3c9;
+        </span>
+        <span
           className={`material-icons ${styles.delete}`}
           onClick={props.onDelete}
         >

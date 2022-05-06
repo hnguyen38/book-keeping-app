@@ -22,6 +22,7 @@ import {
   collection,
   getDocs,
   deleteDoc,
+  updateDoc,
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -147,11 +148,17 @@ export const getUserData = async (userAuth) => {
 export const docDataRef = async (userAuth, id) => {
   const dataDoc = doc(db, `users/${userAuth.uid}/data/${id}`);
   const response = await getDoc(dataDoc);
-  return response.data();
+  return response;
 };
 
 //delete doc
 export const deleteDocData = async (userAuth, id) => {
   const dataDoc = doc(db, `users/${userAuth.uid}/data/${id}`);
   return await deleteDoc(dataDoc);
+};
+
+//update doc
+export const updateDocData = async (userAuth, id, info) => {
+  const dataDoc = doc(db, `users/${userAuth.uid}/data/${id}`);
+  return await updateDoc(dataDoc, { ...info });
 };
