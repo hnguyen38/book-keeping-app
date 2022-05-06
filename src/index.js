@@ -10,6 +10,7 @@ import { ListProvider } from "./context/listContext";
 import { FormPopupProvider } from "./context/FormPopupContext";
 import { ItemProvider } from "./context/itemContext";
 import { UpdateFormProvider } from "./context/updateContext";
+import { SearchProvider } from "./context/searchContext";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,13 +18,15 @@ ReactDOM.render(
       <UserProvider>
         <MountedProvider>
           <ListProvider>
-            <ItemProvider>
-              <UpdateFormProvider>
-                <FormPopupProvider>
-                  <App />
-                </FormPopupProvider>
-              </UpdateFormProvider>
-            </ItemProvider>
+            <SearchProvider>
+              <ItemProvider>
+                <UpdateFormProvider>
+                  <FormPopupProvider>
+                    <App />
+                  </FormPopupProvider>
+                </UpdateFormProvider>
+              </ItemProvider>
+            </SearchProvider>
           </ListProvider>
         </MountedProvider>
       </UserProvider>

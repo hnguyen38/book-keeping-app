@@ -26,10 +26,16 @@
 
     .rightdiv {
       display: flex;
+      flex-direction: column;
+      align-content: center;
       color: rgb(94, 94, 126);
 
       .user {
+        position: relative;
         margin-right: 1rem;
+        &:hover {
+          cursor: pointer;
+        }
       }
 
       a:link,
@@ -40,11 +46,8 @@
         color: rgb(94, 94, 126);
       }
 
-      .materialicons {
-        margin-right: 10px;
-      }
-
       .sign {
+        position: relative;
         margin-left: 1rem;
         &:hover {
           cursor: pointer;

@@ -27,7 +27,11 @@ function TitleBar() {
           <span>
             {currentUser ? (
               <div>
-                <span className={styles.user}>{currentUser.email}</span>
+                <span className={styles.user} onClick={() => navigate("/home")}>
+                  {currentUser.displayName !== null
+                    ? currentUser.displayName
+                    : currentUser.email}
+                </span>
                 {"|"}
                 <span className={styles.sign} onClick={signOut}>
                   Sign Out

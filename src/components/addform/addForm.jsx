@@ -73,7 +73,13 @@ function AddForm({ onCancel }) {
         <div className={styles.date}>
           <label htmlFor="Date">Date</label>
           <br />
-          <input type="date" onChange={handleChange} value={date} name="date" />
+          <input
+            type="date"
+            onChange={handleChange}
+            value={date}
+            name="date"
+            required
+          />
         </div>
         <div className={styles.status}>
           <label htmlFor="Status">Status</label>

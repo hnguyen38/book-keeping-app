@@ -3,6 +3,8 @@ import SignPage from "./routes/SignPage";
 import TitleBar from "./layout/titlebar";
 import Home from "./routes/home-page";
 import { signOutUser } from "./utils/firebase/firebase.utils";
+import { UserContext } from "./context/usercontext";
+import { useContext } from "react";
 
 function App() {
   //log out user on closed tab
