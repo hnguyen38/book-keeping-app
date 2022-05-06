@@ -1,8 +1,8 @@
 import "./searchBar.scss";
 import "../../icons/icons.scss";
-import { ListContext } from "../../context/listContext";
+
 import { SearchContext } from "../../context/searchContext";
-import { useContext, useState, createContext } from "react";
+import { useContext } from "react";
 
 function SearchBar() {
   const { setSearchField } = useContext(SearchContext);

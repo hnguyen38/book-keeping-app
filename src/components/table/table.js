@@ -1,18 +1,12 @@
-import Rows from "./Rows";
 import styles from "./table.module.scss";
 import { useContext, useState } from "react";
-
-import { MountedContext } from "../../context/mountedContext";
-import { UserContext } from "../../context/usercontext";
 import { UpdateFormContext } from "../../context/updateContext";
-import { deleteDocData } from "../../utils/firebase/firebase.utils";
 import { ListContext } from "../../context/listContext";
+
 import ListItem from "./ListItem";
 import UpdateForm from "../updateform/updateForm";
 
 function Table() {
-  const { setMounted } = useContext(MountedContext);
-  const { currentUser } = useContext(UserContext);
   const { list, setList } = useContext(ListContext);
   const [order, setOrder] = useState();
   const { updatePopup, setUpdatePopup } = useContext(UpdateFormContext);

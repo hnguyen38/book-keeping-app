@@ -4,8 +4,7 @@ import { MountedContext } from "../../context/mountedContext";
 import { UpdateFormContext } from "../../context/updateContext";
 import { ItemContext } from "../../context/itemContext";
 import { UserContext } from "../../context/usercontext";
-import { updateDocData, docDataRef } from "../../utils/firebase/firebase.utils";
-import { updateDoc } from "firebase/firestore";
+import { updateDocData } from "../../utils/firebase/firebase.utils";
 
 const field = {
   id: "",
