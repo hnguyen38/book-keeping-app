@@ -31,7 +31,7 @@ function AddForm({ onCancel }) {
     const response = await createUserDataFromAuth(currentUser, {
       ...inputData,
     });
-    console.log(response);
+    // console.log(response);
     resetForm();
     setPopup(false);
     setMounted(true);

@@ -58,11 +58,11 @@ export const createUserDocFromAuth = async (userAuth, additionalInfo) => {
   //lets us access user info with unique uid
   //doc takes 3 arguments: database, collection (we're gonna call it users), & a unique id
   const userDocRef = doc(db, "users", userAuth.uid);
-  console.log(userDocRef);
+  // console.log(userDocRef);
   //gets data from specified user
   const userSnapshot = await getDoc(userDocRef);
-  console.log(userSnapshot);
-  console.log(userSnapshot.exists());
+  // console.log(userSnapshot);
+  //console.log(userSnapshot.exists());
 
   //if doesn't exist, set docs with objects and store in firebase
   if (!userSnapshot.exists()) {
@@ -118,7 +118,7 @@ export const createUserDataFromAuth = async (userAuth, inputs) => {
   //wrapping collection in doc creates unique id for data collection
   //creates new collection called 'data' in each 'users'
   const userDataRef = doc(collection(db, "users", userAuth.uid, "data"));
-  console.log(userDataRef);
+  //console.log(userDataRef);
   try {
     await setDoc(userDataRef, { ...inputs });
   } catch (error) {
@@ -137,7 +137,7 @@ export const getUserData = async (userAuth) => {
     const dataSnapshot = await getDocs(
       collection(db, `users/${userAuth.uid}/data`)
     );
-    console.log(dataSnapshot);
+    //console.log(dataSnapshot);
     return dataSnapshot;
   } catch (e) {
     console.log("Error fetching data", e);

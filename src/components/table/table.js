@@ -14,16 +14,16 @@ function Table() {
   const locationSortHandler = () => {
     if (order) {
       const sortedLocation = list.sort((a, b) => {
-        if (a.location < b.location) return -1;
-        if (a.location > b.location) return 1;
+        if (a.location.toLowerCase() < b.location.toLowerCase()) return -1;
+        if (a.location.toLowerCase() > b.location.toLowerCase()) return 1;
         return 0;
       });
       setList(sortedLocation);
       setOrder(false);
     } else {
       const sortedLocation = list.sort((a, b) => {
-        if (a.location > b.location) return -1;
-        if (a.location < b.location) return 1;
+        if (a.location.toLowerCase() > b.location.toLowerCase()) return -1;
+        if (a.location.toLowerCase() < b.location.toLowerCase()) return 1;
         return 0;
       });
       setList(sortedLocation);
@@ -34,16 +34,16 @@ function Table() {
   const nameSortHandler = () => {
     if (order) {
       const sortedName = list.sort((a, b) => {
-        if (a.name < b.name) return -1;
-        if (a.name > b.name) return 1;
+        if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+        if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
         return 0;
       });
       setList(sortedName);
       setOrder(false);
     } else {
       const sortedName = list.sort((a, b) => {
-        if (a.name > b.name) return -1;
-        if (a.name < b.name) return 1;
+        if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
+        if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
         return 0;
       });
       setList(sortedName);

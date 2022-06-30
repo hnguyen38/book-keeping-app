@@ -47,7 +47,7 @@ function UpdateForm({ onCancel }) {
   //update doc with current data
   const submitHandler = async (event) => {
     event.preventDefault();
-    console.log(inputData);
+    // console.log(inputData);
     await updateDocData(currentUser, item.id, { ...inputData });
     setUpdatePopup(false);
     setMounted(true);
